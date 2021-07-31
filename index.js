@@ -8,7 +8,7 @@ app.get('/', async (req, res) => {
   res.send(githubData);
 });
 
-app('*', () => {
+app('*', (req, res) => {
   res.send(`<div style="text-align:center"> Hello World </div>`);
 });
 
