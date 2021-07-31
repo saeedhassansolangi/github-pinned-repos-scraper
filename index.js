@@ -4,13 +4,14 @@ const ScrapingGithub = require('./scraping-pinned-repos');
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+console.log(PORT);
 
 app.get('/', async (req, res) => {
   const githubData = await ScrapingGithub();
   res.send(githubData);
 });
 
-app('*', (req, res) => {
+app.get('*', (req, res) => {
   res.send('Hello World');
 });
 
