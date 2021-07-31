@@ -8,4 +8,8 @@ app.get('/', async (req, res) => {
   res.send(githubData);
 });
 
+app('*', () => {
+  res.send(`<div style="text-align:center"> Hello World </div>`);
+});
+
 app.listen(3000, () => console.log('server is running on the port:3000'));
