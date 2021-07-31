@@ -1,0 +1,29 @@
+{
+  "name": "github-pinned-repos",
+  "version": "1.0.0",
+  "description": "Scraping the Github PINNED repostories because github doesnot provide the api for accessing the user pinned repositories",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "request",
+    "request-promise",
+    "github",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Saeed Hassan Solangi",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.1",
+    "request-promise": "^4.2.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
