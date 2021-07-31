@@ -4,7 +4,7 @@
   "description": "Scraping the Github PINNED repostories because github doesnot provide the api for accessing the user pinned repositories",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [
     "nodejs",
