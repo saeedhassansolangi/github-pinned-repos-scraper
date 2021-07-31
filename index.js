@@ -9,7 +9,7 @@ app.get('/', async (req, res) => {
 });
 
 app('*', (req, res) => {
-  res.send(`<div style="text-align:center"> Hello World </div>`);
+  res.send('Hello World');
 });
 
 app.listen(3000, () => console.log('server is running on the port:3000'));
