@@ -1,7 +1,7 @@
 const request = require('request-promise');
 const cheerio = require('cheerio');
 
-async function ScrapingGithub() {
+(async () => {
   try {
     // user info
     const USERNAME = 'saeedhassansolangi';
@@ -71,10 +71,12 @@ async function ScrapingGithub() {
       ).each((i, el) => {
         const langPercentage = $(el).siblings(':last').text().trim();
         const langNames = $(el).text().trim();
+        const langColors = $(el).prev().css('color');
 
         repoLanguags.push({
           langName: langNames,
           langUsed: langPercentage,
+          langColor: langColors,
         });
       });
 
@@ -87,10 +89,12 @@ async function ScrapingGithub() {
         repoLanguags,
       });
     }
-    return repos_meta_data;
+    // return repos_meta_data;
+    console.log(repos_meta_data);
+    debugger;
   } catch (error) {
     console.log(error.message);
   }
-}
+})();
 
-module.exports = ScrapingGithub;
+// module.exports = ScrapingGithub;
