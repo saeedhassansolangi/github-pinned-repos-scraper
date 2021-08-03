@@ -3,7 +3,7 @@ const cors = require('cors');
 const apicache = require('apicache');
 const cache = apicache.middleware;
 
-const ScrapeGithubPinnedRepos = require('./scraping-pinned-repos');
+const ScrapeGithubPinnedRepos = require('./scraper');
 
 const app = express();
 app.use(cors());
@@ -13,7 +13,7 @@ app.use(cache('5 minutes'));
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/v1/repos/:username?/', async (req, res) => {
+app.get('/:username?/', async (req, res) => {
   const githubData = await ScrapeGithubPinnedRepos(req.params.username);
   res.send(githubData);
 });

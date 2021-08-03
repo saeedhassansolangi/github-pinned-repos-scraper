@@ -85,7 +85,7 @@ async function ScrapeGithubPinnedRepos(USERNAME = 'saeedhassansolangi') {
     return repos_meta_data;
   } catch (error) {
     console.log(error.message);
-    return error.message;
+    return { message: 'something went wrong' };
   }
 }
 
