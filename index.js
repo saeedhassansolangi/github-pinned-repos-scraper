@@ -1,19 +1,27 @@
 const express = require('express');
 const cors = require('cors');
-const ScrapingGithub = require('./scraping-pinned-repos');
+const apicache = require('apicache');
+const cache = apicache.middleware;
+
+const ScrapeGithubPinnedRepos = require('./scraping-pinned-repos');
 
 const app = express();
-
 app.use(cors());
+
+// caching for 5 minutes
+app.use(cache('5 minutes'));
+
 const PORT = process.env.PORT || 3000;
 
-app.get('/', async (req, res) => {
-  const githubData = await ScrapingGithub();
+app.get('/v1/repos/:username?/', async (req, res) => {
+  const githubData = await ScrapeGithubPinnedRepos(req.params.username);
   res.send(githubData);
 });
 
-app.get('*', (req, res) => {
-  res.send('Hello World');
+app.use('*', (req, res) => {
+  res.status(404).send({
+    message: 'Not Found',
+  });
 });
 
 app.listen(PORT, () => console.log('server is running on the port:3000'));
