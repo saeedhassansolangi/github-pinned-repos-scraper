@@ -89,7 +89,4 @@ async function ScrapeGithubPinnedRepos(USERNAME = 'saeedhassansolangi') {
   }
 }
 
-// console.log(ScrapeGithubPinnedRepos);
-// module.exports = ScrapeGithubPinnedRepos;
-
-ScrapeGithubPinnedRepos();
+module.exports = ScrapeGithubPinnedRepos;
