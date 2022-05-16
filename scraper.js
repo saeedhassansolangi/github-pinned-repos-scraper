@@ -5,13 +5,12 @@ async function ScrapeGithubPinnedRepos(USERNAME = 'saeedhassansolangi') {
   try {
     const BASE_URL = `https://github.com`;
 
-    // first request for fetching the "PINNED" repositories of the user
     const response = await request(`${BASE_URL}/${USERNAME}`);
     const $ = cheerio.load(response);
 
     let reposURLs = [];
 
-    $('a[class="text-bold flex-auto min-width-0 "]').each((i, el) => {
+    $('a[class="mr-1 text-bold wb-break-word"]').each((i, el) => {
       const href = $(el).attr('href');
       reposURLs.push({ href });
     });
@@ -27,7 +26,7 @@ async function ScrapeGithubPinnedRepos(USERNAME = 'saeedhassansolangi') {
       const lang_stats = [];
 
       // repo stars
-      const starred = $('.social-count.js-social-count');
+      const starred = $('a[class="pinned-item-meta Link--muted"]');
       const starred_repo_info = {
         starred_count: starred.text().trim(),
         starred_label: starred.attr('aria-label'),
@@ -82,11 +81,15 @@ async function ScrapeGithubPinnedRepos(USERNAME = 'saeedhassansolangi') {
       });
     }
 
-    return repos_meta_data;
+    // return repos_meta_data;
+    console.log(repos_meta_data);
   } catch (error) {
     console.log(error.message);
     return { message: 'something went wrong' };
   }
 }
 
-module.exports = ScrapeGithubPinnedRepos;
+// console.log(ScrapeGithubPinnedRepos);
+// module.exports = ScrapeGithubPinnedRepos;
+
+ScrapeGithubPinnedRepos();
